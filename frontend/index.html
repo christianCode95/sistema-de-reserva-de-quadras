@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>QuadraPro | Reserva de Quadras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">QP</span>
+        <div>
+          <h1>QuadraPro</h1>
+          <p>Reserve quadras com design premium e usabilidade impecável.</p>
+        </div>
+      </div>
+      <button class="btn btn-ghost hidden" id="logoutBtn">Sair</button>
+    </header>
+
+    <main class="content-area">
+      <section class="view" id="login-view">
+        <div class="auth-card">
+          <div class="auth-header">
+            <h2>Bem-vindo ao QuadraPro</h2>
+            <p>Acesse sua conta e reserve quadras com rapidez, segurança e conforto.</p>
+          </div>
+
+          <div class="auth-switch">
+            <button type="button" class="btn btn-ghost auth-toggle active" id="show-login">Entrar</button>
+            <button type="button" class="btn btn-ghost auth-toggle" id="show-register">Criar conta</button>
+          </div>
+
+          <form id="login-form" class="auth-form">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="usuario@quadrapro.com" required>
+
+            <label for="login-password">Senha</label>
+            <input type="password" id="login-password" placeholder="Sua senha segura" required>
+
+            <button type="submit" class="btn btn-primary">Entrar</button>
+          </form>
+
+          <form id="register-form" class="auth-form hidden">
+            <label for="register-name">Nome</label>
+            <input type="text" id="register-name" placeholder="Seu nome" required>
+
+            <label for="register-email">Email</label>
+            <input type="email" id="register-email" placeholder="usuario@quadrapro.com" required>
+
+            <label for="register-password">Senha</label>
+            <input type="password" id="register-password" placeholder="Crie uma senha" required>
+
+            <label for="register-password-confirm">Confirmar senha</label>
+            <input type="password" id="register-password-confirm" placeholder="Repita a senha" required>
+
+            <button type="submit" class="btn btn-primary">Criar conta</button>
+          </form>
+
+          <p class="auth-note">Faça login ou crie uma conta para começar a reservar quadras.</p>
+          <div id="auth-message" class="message-box"></div>
+        </div>
+      </section>
+
+      <section class="view hidden" id="dashboard-view">
+        <div class="panel hero-panel">
+          <div>
+            <h2>Olá, <span id="user-name"></span></h2>
+            <p>Seu espaço perfeito para reservar quadras e acompanhar seus horários.</p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span>Quadras</span>
+              <strong>3</strong>
+            </div>
+            <div class="stat-card">
+              <span>Reservas</span>
+              <strong id="reservation-count">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Última reserva</span>
+              <strong id="last-reservation">Nenhuma</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-row">
+          <article class="panel card-panel">
+            <div class="panel-title">
+              <div>
+                <h3>Reserve sua próxima quadra</h3>
+                <p>Confira disponibilidade em tempo real e finalize sua reserva com apenas um clique.</p>
+              </div>
+            </div>
+
+            <form id="reservation-form" class="booking-form">
+              <div class="form-grid">
+                <label for="court">Quadra</label>
+                <select id="court" required></select>
+
+                <label for="date">Data</label>
+                <input type="date" id="date" required>
+
+                <label for="time">Horário</label>
+                <input type="time" id="time" min="09:00" max="22:00" required>
+                <small class="field-note">Horários disponíveis: 09:00 às 22:00.</small>
+
+                <label for="players">Jogadores</label>
+                <input type="number" id="players" min="2" max="22" value="10" required>
+              </div>
+
+              <div class="price-line">
+                <span>Pacote estimado</span>
+                <strong id="price-preview">R$ 150,00</strong>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Reservar agora</button>
+              <div id="message" class="message-box"></div>
+            </form>
+          </article>
+
+          <article class="panel info-panel">
+            <div class="panel-title">
+              <h3>Quadras disponíveis</h3>
+              <p>Encontre o espaço ideal para seu jogo.</p>
+            </div>
+            <div id="court-list" class="court-list"></div>
+          </article>
+        </div>
+
+        <article class="panel reservations-panel">
+          <div class="panel-title">
+            <h3>Minhas reservas</h3>
+            <p>Visualize todas as reservas já realizadas.</p>
+          </div>
+          <div id="reservation-list" class="reservation-list"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
