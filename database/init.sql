@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS reserva_quadras_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE reserva_quadras_db;
+
+CREATE TABLE IF NOT EXISTS reservas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  data DATE NOT NULL,
+  hora TIME NOT NULL,
+  quadra VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
